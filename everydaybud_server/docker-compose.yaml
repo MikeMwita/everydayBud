@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: everydaybud
+      POSTGRES_PASSWORD: "o9OUhu-FW_lyOQ_67FKAa5c9yYdzJnSK"
+    volumes:
+      - everydaybud_data:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "ISH8u3cKw1YJKce5vZIpjan9Ri8V_MEQ"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+volumes:
+  everydaybud_data:
